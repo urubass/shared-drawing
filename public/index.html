@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shared Drawing</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #startScreen {
+      text-align: center;
+    }
+
+    #playerNameInput {
+      font-size: 24px;
+      padding: 10px;
+      width: 300px;
+      margin-bottom: 20px;
+    }
+
+    #gameContainer {
+      display: none;
+      position: relative;
+    }
+
+    #toolbar {
+      width: 150px;
+      padding: 10px;
+      background-color: #f0f0f0;
+    }
+
+    .colorSquare {
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+      border: 1px solid black;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    #canvas {
+      border: 1px solid black;
+    }
+
+    #clearIcon {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    #chat {
+      width: 200px;
+      padding: 10px;
+      background-color: #f0f0f0;
+    }
+
+    #messages {
+      height: 300px;
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+<body>
+  <div id="startScreen">
+    <input type="text" id="playerNameInput" placeholder="Enter your name" autofocus>
+  </div>
+
+  <div id="gameContainer">
+    <div id="toolbar">
+      <div class="colorSquare" style="background-color: red;" onclick="setColor('red')"></div>
+      <div class="colorSquare" style="background-color: orange;" onclick="setColor('orange')"></div>
+      <div class="colorSquare" style="background-color: yellow;" onclick="setColor('yellow')"></div>
+      <div class="colorSquare" style="background-color: green;" onclick="setColor('green')"></div>
+      <div class="colorSquare" style="background-color: blue;" onclick="setColor('blue')"></div>
+      <div class="colorSquare" style="background-color: purple;" onclick="setColor('purple')"></div>
+      <div class="colorSquare" style="background-color: pink;" onclick="setColor('pink')"></div>
+      <div class="colorSquare" style="background-color: brown;" onclick="setColor('brown')"></div>
+      <div class="colorSquare" style="background-color: black;" onclick="setColor('black')"></div>
+      <div class="colorSquare" style="background-color: white; border: 1px solid black;" onclick="setColor('white')"></div>
+      <button onclick="setWidth(2)">Thin</button>
+      <button onclick="setWidth(5)">Thick</button>
+    </div>
+
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <img id="clearIcon" src="trash-icon.png" alt="Clear Canvas" onclick="clearCanvas()">
+
+    <div id="chat">
+      <ul id="messages"></ul>
+      <input id="chatInput" type="text" placeholder="Type a message...">
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
